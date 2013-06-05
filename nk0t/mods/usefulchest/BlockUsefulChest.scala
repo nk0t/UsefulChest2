@@ -47,17 +47,6 @@ class BlockUsefulChest(blockId : Int) extends BlockContainer(blockId, Material.w
     override def onBlockActivated(world : World, x : Int, y : Int, z : Int, player : EntityPlayer,
                                   s : Int, p : Float, q : Float, r : Float) : Boolean = {
 
-        val currentItem = player.inventory.getCurrentItem()
-        val tileEntity = world.getBlockTileEntity(x, y, z)
-
-        if (tileEntity == null) {
-            return true
-        }
-
-        if (currentItem != null && currentItem.itemID == UsefulChest.usefulChestBlock.blockID) {
-            return false
-        }
-
         if (world.isRemote) {
             return true
         }
